@@ -7,7 +7,7 @@
     <list default="true" id="bed801ba-ec7d-4489-a924-204fc702a8f0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blueprints/general.py" beforeDir="false" afterPath="$PROJECT_DIR$/blueprints/general.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blueprints/user.py" beforeDir="false" afterPath="$PROJECT_DIR$/blueprints/user.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,6 +21,17 @@
       </list>
     </option>
   </component>
+  <component name="FlaskConsoleOptions" custom-start-script="import sys&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;from flask.cli import ScriptInfo&#10;locals().update(ScriptInfo(create_app=None).load_app().make_shell_context())&#10;print(&quot;Python %s on %s\nApp: %s [%s]\nInstance: %s&quot; % (sys.version, sys.platform, app.import_name, app.env, app.instance_path))">
+    <envs>
+      <env key="FLASK_APP" value="app" />
+    </envs>
+    <option name="myCustomStartScript" value="import sys&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;from flask.cli import ScriptInfo&#10;locals().update(ScriptInfo(create_app=None).load_app().make_shell_context())&#10;print(&quot;Python %s on %s\nApp: %s [%s]\nInstance: %s&quot; % (sys.version, sys.platform, app.import_name, app.env, app.instance_path))" />
+    <option name="myEnvs">
+      <map>
+        <entry key="FLASK_APP" value="app" />
+      </map>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -28,7 +39,9 @@
   &quot;associatedIndex&quot;: 4
 }</component>
   <component name="ProjectId" id="2oFrdPVFJpdF2g5xf6BbdOTe5er" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -37,14 +50,26 @@
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Admin/PycharmProjects/shop/models&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;sqlite&quot;
+    ]
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Admin\PycharmProjects\shop\models" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="shop" type="Python.FlaskServer">
       <module name="shop" />
@@ -82,7 +107,18 @@
       <workItem from="1730476253956" duration="2035000" />
       <workItem from="1730707976038" duration="8398000" />
       <workItem from="1730722779453" duration="35000" />
-      <workItem from="1730722827742" duration="152000" />
+      <workItem from="1730722827742" duration="499000" />
+      <workItem from="1730789389573" duration="1477000" />
+      <workItem from="1730790906848" duration="503000" />
+      <workItem from="1730791423985" duration="813000" />
+      <workItem from="1730792254865" duration="549000" />
+      <workItem from="1730796102887" duration="938000" />
+      <workItem from="1730797062926" duration="369000" />
+      <workItem from="1730797443006" duration="1244000" />
+      <workItem from="1730810844944" duration="4086000" />
+      <workItem from="1730815363649" duration="2354000" />
+      <workItem from="1730819372294" duration="2590000" />
+      <workItem from="1730835169654" duration="315000" />
     </task>
     <servers />
   </component>
