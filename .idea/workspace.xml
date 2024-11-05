@@ -7,7 +7,8 @@
     <list default="true" id="bed801ba-ec7d-4489-a924-204fc702a8f0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blueprints/user.py" beforeDir="false" afterPath="$PROJECT_DIR$/blueprints/user.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blueprints/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/blueprints/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/config.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -118,7 +119,7 @@
       <workItem from="1730810844944" duration="4086000" />
       <workItem from="1730815363649" duration="2354000" />
       <workItem from="1730819372294" duration="2590000" />
-      <workItem from="1730835169654" duration="315000" />
+      <workItem from="1730835169654" duration="5786000" />
     </task>
     <servers />
   </component>
