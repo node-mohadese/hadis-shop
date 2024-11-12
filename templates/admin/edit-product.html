@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block header %}
+    <title>edit products</title>
+{% endblock %}
+
+{% block body %}
+
+    <form action="#" method="post">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+        <input type="text" name="name" value="{{ product.name }} " placeholder=" نام محصول"><br>
+        <textarea name="description" placeholder="توضیحات">{{ product.description }}</textarea><br>
+        <input type="number" name="price" value="{{ product.price }}" placeholder=" قیمت‌ ‌محصول"><br>
+        <label>فعال:</label><input value="1" type="checkbox" name="active"{{ "checked" if product.active == 1 }}>
+        <input type="submit">
+
+    </form>
+{% endblock %}
