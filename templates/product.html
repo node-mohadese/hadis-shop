@@ -5,7 +5,9 @@
 {% endblock %}
 
 {% block body %}
-   {{ product.id }}<br>
-   {{ product.name }}<br>
-   {{ product.price }}
+    <img style="width: 300px" src="/static/cover/{{ product.id }}.jpg">
+
+    {{ product.id }}<br>
+    {{ product.name }}<br>
+    {{ product.price }}
 {% endblock %}
