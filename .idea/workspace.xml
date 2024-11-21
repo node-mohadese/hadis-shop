@@ -5,12 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bed801ba-ec7d-4489-a924-204fc702a8f0" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shop.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shop.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blueprints/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/blueprints/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blueprints/user.py" beforeDir="false" afterPath="$PROJECT_DIR$/blueprints/user.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/instance/database.db" beforeDir="false" afterPath="$PROJECT_DIR$/instance/database.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/edit-product.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/edit-product.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/products.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/products.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/product.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/product.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/user.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/user.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,7 +57,7 @@
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Admin/PycharmProjects/shop/templates&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Admin/PycharmProjects/shop/templates/user&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -72,6 +74,7 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Admin\PycharmProjects\shop\templates\user" />
       <recent name="C:\Users\Admin\PycharmProjects\shop\templates" />
       <recent name="C:\Users\Admin\PycharmProjects\shop\templates\admin" />
       <recent name="C:\Users\Admin\PycharmProjects\shop\models" />
@@ -132,11 +135,26 @@
       <workItem from="1731329324437" duration="11758000" />
       <workItem from="1731419975482" duration="7019000" />
       <workItem from="1731845671030" duration="4640000" />
-      <workItem from="1731918540210" duration="334000" />
+      <workItem from="1731918540210" duration="4502000" />
+      <workItem from="1731924062188" duration="3305000" />
+      <workItem from="1731950167056" duration="2566000" />
+      <workItem from="1732176784101" duration="3208000" />
+      <workItem from="1732193053871" duration="1727000" />
+      <workItem from="1732194810881" duration="2027000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/blueprints/user.py</url>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
