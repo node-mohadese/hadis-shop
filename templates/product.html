@@ -10,4 +10,9 @@
     {{ product.id }}<br>
     {{ product.name }}<br>
     {{ product.price }}
+    <form method="get" action="/add-to-cart">
+    <input type="hidden" name="id" value="{{ product.id }}">
+    <input type="submit" value="اضافه کردن به سبد خرید">
+
+    </form>
 {% endblock %}
