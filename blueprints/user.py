@@ -161,4 +161,11 @@ def verify():
 @app.route('/user/dashbard', methods=['GET'])
 @login_required
 def dashboard():
-    return "this is dashboard"
+    return render_template('user/dashboard.html')
+
+@app.route('/user/dashbard/order/<id>', methods=['GET'])
+@login_required
+def order(id):
+    cart = current_user.carts.filter(Cart.id == id).first_or_404()
+
+    return render_template('user/order.html', cart=cart)
