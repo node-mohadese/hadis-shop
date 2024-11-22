@@ -1,18 +1,20 @@
 {% extends 'base.html' %}
-
 {% block header %}
     <title>سبد خرید کاربر</title>
 {% endblock %}
-
 {% block body %}
-    {% set cart = current_user.carts|selectattr('status','equalto','pending')|list %}
-    {% if cart|length > 0 %}
-        {% for card_item in (cart|first).cart_items %}
-            {{ card_item.product.name }} , {{ card_item.quantity }} , {{ card_item.product.price }}
+
+    {% if cart != None and cart.cart_items|list|length > 0 %}
+        {% for cart_item in cart.cart_items %}
+            {{ cart_item.product.name }} , {{ cart_item.quantity }} , {{ cart_item.product.price }}
             <form action="/remove-from-cart" method="get">
                 <input type="hidden" name="id" value="{{ cart_item.id }}">
                 <input type="submit" value="حذف">
             </form>
         {% endfor %}
+        <b>قیمت کل:{{ cart.total_price() }}تومان</b>
+        <a href="/payment">پرداخت</a>
+    {% else %}
+        سبد خرید خالی است.
     {% endif %}
 {% endblock %}
