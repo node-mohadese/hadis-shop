@@ -146,6 +146,7 @@ def verify():
         pay.refid = refid
         pay.status = 'success'
         pay.cart.status = 'paid'
+        db.session.commit()
         flash("پرداخت موفقیت آمیز بود.")
     else:
         pay.status = 'failed'
