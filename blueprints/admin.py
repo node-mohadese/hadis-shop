@@ -1,6 +1,5 @@
 from flask import Blueprint, render_template, request, session, redirect, abort, url_for
 import config
-
 from models.cart import Cart
 from models.product import Product
 from extentions import db

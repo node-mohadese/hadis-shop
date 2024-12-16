@@ -159,7 +159,7 @@ def verify():
     return redirect(url_for('user.dashboard'))
 
 
-@app.route('/user/dashbard', methods=['GET'])
+@app.route('/user/dashboard', methods=['GET'])
 @login_required
 def dashboard():
     return render_template('user/dashboard.html')

@@ -9,9 +9,8 @@
       <change beforePath="$PROJECT_DIR$/blueprints/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/blueprints/admin.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/blueprints/user.py" beforeDir="false" afterPath="$PROJECT_DIR$/blueprints/user.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/instance/database.db" beforeDir="false" afterPath="$PROJECT_DIR$/instance/database.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/cart.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/cart.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/dashboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/dashboard.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/user/dashboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user/dashboard.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/main.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/user/order.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user/order.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -53,31 +52,32 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
-    "last_opened_file_path": "C:/Users/Admin/PycharmProjects/shop/templates/admin",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Admin/PycharmProjects/shop/static/image&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "sqlite"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;sqlite&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Admin\PycharmProjects\shop\static\image" />
+      <recent name="C:\Users\Admin\PycharmProjects\shop\static\font" />
       <recent name="C:\Users\Admin\PycharmProjects\shop\templates\admin" />
       <recent name="C:\Users\Admin\PycharmProjects\shop\templates\user" />
       <recent name="C:\Users\Admin\PycharmProjects\shop\models" />
-      <recent name="C:\Users\Admin\PycharmProjects\shop\templates" />
     </key>
   </component>
   <component name="RunManager">
@@ -148,7 +148,19 @@
       <workItem from="1732265567339" duration="3180000" />
       <workItem from="1732274943959" duration="4431000" />
       <workItem from="1732296294475" duration="10204000" />
-      <workItem from="1732336227542" duration="6911000" />
+      <workItem from="1732336227542" duration="7848000" />
+      <workItem from="1732344370721" duration="845000" />
+      <workItem from="1732365299161" duration="5074000" />
+      <workItem from="1732382953788" duration="3293000" />
+      <workItem from="1732472017348" duration="276000" />
+      <workItem from="1732969148815" duration="2883000" />
+      <workItem from="1733139380377" duration="6000" />
+      <workItem from="1734077789878" duration="3547000" />
+      <workItem from="1734086069657" duration="1136000" />
+      <workItem from="1734088734041" duration="478000" />
+      <workItem from="1734194651918" duration="4996000" />
+      <workItem from="1734286047490" duration="5171000" />
+      <workItem from="1734377325317" duration="3332000" />
     </task>
     <servers />
   </component>
