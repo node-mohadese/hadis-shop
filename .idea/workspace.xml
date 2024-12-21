@@ -6,12 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="bed801ba-ec7d-4489-a924-204fc702a8f0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blueprints/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/blueprints/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blueprints/user.py" beforeDir="false" afterPath="$PROJECT_DIR$/blueprints/user.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blueprints/general.py" beforeDir="false" afterPath="$PROJECT_DIR$/blueprints/general.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/instance/database.db" beforeDir="false" afterPath="$PROJECT_DIR$/instance/database.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/cover/3.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/static/cover/3.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/cover/5.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/static/cover/5.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/index.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/main.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/user/order.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user/order.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,7 +56,7 @@
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Admin/PycharmProjects/shop/static/image&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Admin/PycharmProjects/shop/static/theme-image&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -73,11 +73,11 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Admin\PycharmProjects\shop\static\theme-image" />
       <recent name="C:\Users\Admin\PycharmProjects\shop\static\image" />
       <recent name="C:\Users\Admin\PycharmProjects\shop\static\font" />
       <recent name="C:\Users\Admin\PycharmProjects\shop\templates\admin" />
       <recent name="C:\Users\Admin\PycharmProjects\shop\templates\user" />
-      <recent name="C:\Users\Admin\PycharmProjects\shop\models" />
     </key>
   </component>
   <component name="RunManager">
@@ -89,7 +89,7 @@
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
@@ -160,7 +160,11 @@
       <workItem from="1734088734041" duration="478000" />
       <workItem from="1734194651918" duration="4996000" />
       <workItem from="1734286047490" duration="5171000" />
-      <workItem from="1734377325317" duration="3332000" />
+      <workItem from="1734377325317" duration="4004000" />
+      <workItem from="1734684560475" duration="3219000" />
+      <workItem from="1734793558200" duration="6538000" />
+      <workItem from="1734807234942" duration="949000" />
+      <workItem from="1734815265832" duration="4066000" />
     </task>
     <servers />
   </component>
@@ -173,6 +177,11 @@
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/blueprints/user.py</url>
           <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="jinja2-line">
+          <url>file://$PROJECT_DIR$/templates/main.html</url>
+          <line>11</line>
+          <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
