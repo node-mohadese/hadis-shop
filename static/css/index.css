@@ -147,7 +147,7 @@ header a:hover {
     flex-wrap: wrap;
     display: flex;
     justify-content: center;
-    align-items: stretch;
+    align-items: start;
     margin-top: 20px;
 }
 
@@ -159,7 +159,15 @@ header a:hover {
     background-color: #FDF9F3;
     border: 1px solid #E3E4E6;
     border-radius: 10px;
+    padding-bottom:32px;
 }
+.price{
+    font-size: 16px;
+    font-weight: 500;
+    float: left;
+    padding-left: 10px;
+}
+
 
 .product-box section > img {
     width: 100%;

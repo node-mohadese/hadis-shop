@@ -6,10 +6,10 @@
 
 {% block body %}
 
-{% include 'parts/header.html' %}
+    {% include 'parts/header.html' %}
     <section class="products">
         {% for p in products %}
-          {% include 'parts/product.html' %}
+            {% include 'parts/product.html' %}
         {% endfor %}
     </section>
 {% endblock %}

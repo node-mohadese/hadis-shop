@@ -6,6 +6,7 @@
                     src="{{ url_for('static',filename="theme-image/delivery.png") }}">ارسال رایگان</span>
             <h3>{{ p.name }}</h3>
             <p>{{ p.description|truncate(100) }}</p>
+            <span class="price">{{ p.price }}</span>
         </section>
     </a>
     <a class="add-to-cart-btn" href="/add-to-cart?id={{ p.id }}"> افزودن به سبد خرید<img
