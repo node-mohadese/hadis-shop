@@ -3,10 +3,12 @@
         <section>
             <img src="{{ url_for('static', filename='cover/'+p.id|string+'.jpg') }}">
             <span class="tag delivery"><img
-                    src="{{ url_for('static',filename="theme-image/delivery.png") }}">ارسال رایگان</span>
+                    src="{{ url_for('static',filename="theme-image/delivery-car.png") }}">ارسال به سراسر کشور</span>
+            <span class="tag wallet"><img
+                    src="{{ url_for('static',filename="theme-image/wallet.png") }}">پرداخت درب محل</span>
             <h3>{{ p.name }}</h3>
             <p>{{ p.description|truncate(100) }}</p>
-            <span class="price">{{ p.price }}</span>
+            <span class="price" style="float: left; padding-left: 18px;">{{ p.price }}</span>
         </section>
     </a>
     <a class="add-to-cart-btn" href="/add-to-cart?id={{ p.id }}"> افزودن به سبد خرید<img
