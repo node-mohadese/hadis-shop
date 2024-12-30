@@ -2,13 +2,16 @@
 
     <section>
         <img src="{{ url_for('static',filename = 'image/logo.png') }}" alt="HADIS">
-        <div>
+        <div id="header-menu">
+            <span id="header-menu-close-btn" onclick="change_header_menu(false)">×</span>
             <form action="/" method="get">
                 <input type="search" name="search" value="{{ search if search !=None }}" placeholder="جستجو...">
             </form>
             <a href="/">صفحه اصلی</a>
+            <a href="/user/login">ورود‌/ ثبت‌ ‌نام</a>
             <a href="/about">درباره ما</a>
         </div>
+        <img src="{{ url_for('static',filename = 'theme-image/menu.png') }}" id="header-menu-btn" onclick="change_header_menu(true)" >
     </section>
 
 </header>
