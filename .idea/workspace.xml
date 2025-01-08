@@ -6,9 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="bed801ba-ec7d-4489-a924-204fc702a8f0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/instance/database.db" beforeDir="false" afterPath="$PROJECT_DIR$/instance/database.db" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/css/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/index.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/parts/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/parts/header.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/parts/product.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/parts/product.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/product.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/product.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/user/cart.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user/cart.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -174,7 +177,10 @@
       <workItem from="1735063250096" duration="2974000" />
       <workItem from="1735250070173" duration="3467000" />
       <workItem from="1735566180199" duration="4845000" />
-      <workItem from="1735587285757" duration="1577000" />
+      <workItem from="1735587285757" duration="2943000" />
+      <workItem from="1735590278344" duration="2122000" />
+      <workItem from="1736320370065" duration="5572000" />
+      <workItem from="1736363065573" duration="4293000" />
     </task>
     <servers />
   </component>
