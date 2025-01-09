@@ -333,9 +333,15 @@ a.icon > img {
     font-size: 20px;
     float: left;
     border-radius: 5px;
-    background: #FDF9F3;
+    border:3px solid #FDF9F3;
     padding: 10px;
+    margin: 5px;
     font-weight: 700;
+}
+.cart .pay-btn:hover {
+    color: var(--font-color);
+    font-size: 22px;
+    background: #FDF9F3;
 }
 
 .product-description-box {
@@ -369,10 +375,14 @@ a.icon > img {
     background: rgba(253, 249, 243, 0.71);
     border: 2px solid #02570d;
     border-radius: 25px;
-    max-width: 290px;
+    max-width: 800px;
     margin: 20px auto auto;
     padding: 10px;
     overflow: auto;
+}
+p{
+    text-align: justify;
+    padding: 5px 10px;
 }
 
 .simple-box h1 {
@@ -407,6 +417,8 @@ table.cart {
 }
 
 table.cart td {
+    vertical-align: middle;
+      text-align: center;
     padding: 5px;
     border-bottom: 2px solid rgba(80, 110, 73, 0.65);
 }
