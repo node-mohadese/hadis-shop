@@ -75,7 +75,7 @@
 }
 
 * {
-    transition: all 200ms ease-in;
+    transition: all 200ms ease-in !important;
 }
 
 body {
@@ -314,7 +314,7 @@ a.icon > img {
 
 .price {
     display: block;
-    background: #FDF9F3;
+    /*background: #FDF9F3;*/
     border-top-left-radius: 9px;
     border-top-right-radius: 9px;
     color: #453939;
@@ -369,7 +369,7 @@ a.icon > img {
     background: rgba(253, 249, 243, 0.71);
     border: 2px solid #02570d;
     border-radius: 25px;
-    max-width: 800px;
+    max-width: 290px;
     margin: 20px auto auto;
     padding: 10px;
     overflow: auto;
@@ -377,6 +377,7 @@ a.icon > img {
 
 .simple-box h1 {
     margin: 0 10px;
+    text-align: right;
 }
 
 .cartitem-btn {
@@ -388,7 +389,7 @@ a.icon > img {
     display: inline-block;
     margin: 5px;
     text-decoration: none;
-    color:var(--font-color);
+    color: var(--font-color);
 }
 
 .cartitem-decrease {
@@ -410,6 +411,48 @@ table.cart td {
     border-bottom: 2px solid rgba(80, 110, 73, 0.65);
 }
 
+#login-box {
+
+}
+
+#register-box {
+    display: none;
+}
+
+.simple-box input, .simple-box textarea {
+    color: var(--font-color);
+    font-size: 16px;
+    font-family: Vazirmatn;
+    display: block;
+    border-radius: 10px;
+    border: 1px solid rgba(75, 104, 71, 0.53);
+    margin: 10px auto;
+    padding:2px 5px;
+}
+
+.simple-box input[type='submit'] {
+    all: unset;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 191px;
+    cursor: pointer;
+    margin: auto;
+    display: block;
+    text-align: center;
+    background: white;
+    padding: 3px 4px;
+    color: var(--font-color);
+    border: 2px solid #656a63;
+    font-weight: 700;
+}
+.simple-box input[type='submit']:hover {
+    background: rgb(102, 140, 97);
+    color: #eef3ee;
+    border: 2px solid #656a63;
+}
+#register-box , #login-box{
+   text-align: center;
+}
 @media (max-width: 725px) {
     header > section > div {
         display: block;

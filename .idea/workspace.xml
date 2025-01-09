@@ -8,10 +8,8 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/instance/database.db" beforeDir="false" afterPath="$PROJECT_DIR$/instance/database.db" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/css/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/index.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/parts/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/parts/header.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/parts/product.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/parts/product.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/product.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/product.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/user/cart.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user/cart.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/user/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user/login.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,7 +57,7 @@
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Admin/PycharmProjects/shop/static/theme-image&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Admin/PycharmProjects/shop/static/js&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -76,11 +74,11 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Admin\PycharmProjects\shop\static\js" />
+      <recent name="C:\Users\Admin\PycharmProjects\shop\static\css" />
       <recent name="C:\Users\Admin\PycharmProjects\shop\static\theme-image" />
       <recent name="C:\Users\Admin\PycharmProjects\shop\static\image" />
       <recent name="C:\Users\Admin\PycharmProjects\shop\static\font" />
-      <recent name="C:\Users\Admin\PycharmProjects\shop\templates\admin" />
-      <recent name="C:\Users\Admin\PycharmProjects\shop\templates\user" />
     </key>
   </component>
   <component name="RunManager">
@@ -180,7 +178,9 @@
       <workItem from="1735587285757" duration="2943000" />
       <workItem from="1735590278344" duration="2122000" />
       <workItem from="1736320370065" duration="5572000" />
-      <workItem from="1736363065573" duration="4293000" />
+      <workItem from="1736363065573" duration="8661000" />
+      <workItem from="1736447192497" duration="571000" />
+      <workItem from="1736450090591" duration="955000" />
     </task>
     <servers />
   </component>
