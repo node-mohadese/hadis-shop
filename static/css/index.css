@@ -83,7 +83,6 @@ body {
     margin: 0;
     font-size: 16px;
     background: #9CAF88;
-
     color: var(--font-color);
     font-family: Vazirmatn;
 }
@@ -102,13 +101,13 @@ header img {
 header > section {
     width: 100%;
     max-width: 800px;
-    height: 60px;
-    margin: 30px auto auto;
-    padding: 10px 20px;
-    border: 2px solid #E3E4E6;
+    height: 70px;
+    margin: 18px auto auto;
+    padding: 15px 20px;
     border-radius: 20px;
     box-sizing: border-box;
     background-color: #FDF9F3;
+    box-shadow: 1px 1px 10px 1px #00000020;
 
 }
 
@@ -161,7 +160,8 @@ header a:hover {
     background-color: #FDF9F3;
     border: 1px solid #E3E4E6;
     border-radius: 10px;
-    padding-bottom: 32px;
+    overflow: auto;
+    padding-bottom: 6px;
 }
 
 .price {
@@ -228,9 +228,12 @@ td.price{
 .product-box {
     position: relative;
 }
-
+.product-box section:hover {
+    box-shadow: 1px 1px 10px 1px rgba(50, 74, 47, 0.75);
+}
 .product-box:hover .add-to-cart-btn {
     opacity: 1;
+
 }
 
 .product-box section > p {
@@ -248,6 +251,14 @@ a.icon {
 a.icon > img {
     width: 20px;
     margin-right: 5px;
+}
+
+.banner{
+    display: block;
+    max-width: 800px;
+    width: 100%;
+    margin: 10px auto;
+    border-radius: 35px;
 }
 
 .tag {
@@ -382,7 +393,7 @@ a.icon > img {
     padding: 10px;
     overflow: auto;
 }
-p{
+.simple-box p{
     text-align: justify;
     padding: 5px 10px;
 }
@@ -464,6 +475,15 @@ table.cart td{
 }
 #register-box , #login-box{
    text-align: center;
+}
+
+.eggy .title{
+    font-weight: 800 !important;
+    font-size: 19px !important;
+}
+.eggy .message{
+    font-weight: 400 !important;
+    font-size: 14px !important;
 }
 @media (max-width: 725px) {
     header > section > div {
