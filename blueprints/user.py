@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, request, redirect, url_for, flash
-from flask_login import login_user, login_required, current_user
+from flask_login import login_user, login_required, current_user,logout_user
 from passlib.hash import sha256_crypt
 from extentions import db
 from models.cart import Cart
@@ -49,8 +49,6 @@ def login():
         else:
             flash('نام کاربری یا رمز اشتباه است')
             return redirect(url_for('user.login'))
-
-    return 'done'
 
 
 @app.route('/add-to-cart', methods=['GET'])
@@ -107,14 +105,13 @@ def payment():
     cart = current_user.carts.filter(Cart.status == 'pending').first()
     r = requests.post(config.PAYMENT_FIRST_REQUEST_URL,
                       data={
-                          'api':config.PAYMENT_MERCHANT,
-                          'amount':cart.total_price(),
+                          'api': config.PAYMENT_MERCHANT,
+                          'amount': cart.total_price(),
                           'callback': config.PAYMENT_CALLBACK
 
                       })
     token = r.json()['result']['token']
     url = r.json()['result']['url']
-
 
     pay = Payment(price=cart.total_price(), token=token)
     pay.cart = cart
@@ -154,17 +151,46 @@ def verify():
         pay.status = 'failed'
         flash("پرداخت با خطا مواجه شد.")
 
-
     db.session.commit()
-
 
     return redirect(url_for('user.dashboard'))
 
 
-@app.route('/user/dashboard', methods=['GET'])
+@app.route('/user/dashboard', methods=['GET', 'POST'])
 @login_required
 def dashboard():
-    return render_template('user/dashboard.html')
+    if request.method == "GET":
+        return render_template('user/dashboard.html')
+    else:
+        username = request.form.get('username', None)
+        password = request.form.get('password', None)
+        phone = request.form.get('phone', None)
+        address = request.form.get('address', None)
+
+        if current_user.username != username:
+            user = User.query.filter(User.username == username).first()
+            if user != None:
+                flash('نام کاربری از قبل انتخاب شده است.')
+                return redirect(url_for('user.dashboard'))
+            else:
+                current_user.username = username
+
+        if password != None:
+            current_user.password =sha256_crypt.encrypt(password)
+
+        current_user.address =address
+        current_user.phone =phone
+        db.session.commit()
+
+        flash('تغییرات با موفقیت ثبت شد')
+        return redirect(url_for('user.dashboard'))
+
+@app.route('/user/logout', methods=['GET'])
+@login_required
+def logout():
+    logout_user()
+    flash('با موفقیت خارج شدید.')
+    return redirect('/')
 
 @app.route('/user/dashbard/order/<id>', methods=['GET'])
 @login_required

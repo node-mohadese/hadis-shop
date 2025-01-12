@@ -356,6 +356,21 @@ a.icon > img {
     font-size: 22px;
     background: #FDF9F3;
 }
+.red-btn {
+    text-decoration: none;
+    color: #c50d0d;
+    font-size: 20px;
+    border-radius: 15px;
+    border:3px solid #c50d0d;
+    padding: 6px;
+    margin: 5px;
+    font-weight: 700;
+}
+.red-btn:hover {
+    color: #FDF9F3;
+    font-size: 22px;
+    background: #bd1919;
+}
 
 .product-description-box {
     max-width: 1100px;
@@ -470,7 +485,7 @@ table.cart td{
 }
 .simple-box input[type='submit']:hover {
     background: rgb(102, 140, 97);
-    color: #eef3ee;
+    color: #eef0f3;
     border: 2px solid #656a63;
 }
 #register-box , #login-box{
@@ -484,6 +499,13 @@ table.cart td{
 .eggy .message{
     font-weight: 400 !important;
     font-size: 14px !important;
+}
+
+.eggy>div.info svg:first-of-type {
+    fill: #34456e !important;
+}
+.eggy>div.info {
+    border: 2px solid #305c7e !important;
 }
 @media (max-width: 725px) {
     header > section > div {
