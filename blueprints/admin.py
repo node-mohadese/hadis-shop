@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, session, redirect, abort, url_for
+from flask import Blueprint, render_template, request, session, redirect, abort, url_for, flash
 import config
 from models.cart import Cart
 from models.product import Product
@@ -43,6 +43,7 @@ def order(id):
         status = request.form.get('status')
         cart.status = status
         db.session.commit()
+        flash('وضعیت سفارش با موفقیت تغییر کرد.')
         return redirect(url_for('admin.order', id=id))
 
 
@@ -69,6 +70,7 @@ def products():
     db.session.commit()
 
     file.save(f'static/cover/{p.id}.jpg')
+    flash('محصول جدید اضافه شد.')
 
     return "done"
 
@@ -97,5 +99,6 @@ def edit_product(id):
 
         if file.filename != "":
             file.save(f'static/cover/{product.id}.jpg')
+            flash('تغییرات با موفقیت ثبت شد.')
 
         return redirect(url_for("admin.edit_product", id=id))

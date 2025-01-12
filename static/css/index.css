@@ -457,7 +457,7 @@ table.cart td{
     display: none;
 }
 
-.simple-box input, .simple-box textarea {
+.simple-box input, .simple-box textarea , .simple-box select {
     color: var(--font-color);
     font-size: 16px;
     font-family: Vazirmatn;

@@ -6,11 +6,15 @@
   <component name="ChangeListManager">
     <list default="true" id="bed801ba-ec7d-4489-a924-204fc702a8f0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blueprints/user.py" beforeDir="false" afterPath="$PROJECT_DIR$/blueprints/user.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/instance/database.db" beforeDir="false" afterPath="$PROJECT_DIR$/instance/database.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blueprints/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/blueprints/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/payment.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/payment.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/css/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/dashboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/dashboard.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/order.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/order.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/products.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/products.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/parts/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/parts/header.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/user/dashboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user/dashboard.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/user/order.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user/order.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -186,6 +190,7 @@
       <workItem from="1736601626418" duration="87000" />
       <workItem from="1736601724244" duration="2022000" />
       <workItem from="1736700845594" duration="1293000" />
+      <workItem from="1736710823195" duration="4411000" />
     </task>
     <servers />
   </component>

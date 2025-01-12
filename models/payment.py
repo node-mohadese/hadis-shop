@@ -1,6 +1,6 @@
-
 from sqlalchemy import *
 from extentions import db, get_current_time
+
 
 class Payment(db.Model):
     __tablename__ = "payments"
@@ -16,4 +16,12 @@ class Payment(db.Model):
     cart_id = Column(Integer, ForeignKey('carts.id'), nullable=False)
     cart = db.relationship('Cart', backref='payments')
 
+
+    def get_status_persian(self):
+        if self.status == 'pending':
+            return "در انتظار پرداخت"
+        if self.status == 'success':
+            return "پرداخت شده"
+        if self.status == 'failed':
+            return "عدم موفقیت"
 
