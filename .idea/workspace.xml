@@ -9,7 +9,6 @@
       <change beforePath="$PROJECT_DIR$/blueprints/user.py" beforeDir="false" afterPath="$PROJECT_DIR$/blueprints/user.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/instance/database.db" beforeDir="false" afterPath="$PROJECT_DIR$/instance/database.db" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/css/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/index.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/parts/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/parts/header.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/user/dashboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user/dashboard.html" afterDir="false" />
     </list>
@@ -186,7 +185,7 @@
       <workItem from="1736495856992" duration="6467000" />
       <workItem from="1736601626418" duration="87000" />
       <workItem from="1736601724244" duration="2022000" />
-      <workItem from="1736700845594" duration="980000" />
+      <workItem from="1736700845594" duration="1293000" />
     </task>
     <servers />
   </component>
