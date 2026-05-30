@@ -28,7 +28,7 @@ def login():
     phone = request.form.get('phone', None)
     address = request.form.get('address', None)
 
-    # ✅ جلوگیری از خالی بودن
+    # جلوگیری از ورودی خالی
     if not username or not password:
         flash("نام کاربری و رمز عبور الزامی است")
         return redirect(url_for('user.login'))
@@ -59,6 +59,10 @@ def login():
         db.session.commit()
 
         login_user(user)
+
+        # انتقال سبد مهمان
+        _merge_guest_cart_to_user(user)
+
         return redirect(url_for('user.dashboard'))
 
     # ================= LOGIN =================
@@ -73,11 +77,54 @@ def login():
         return redirect(url_for('user.login'))
 
     login_user(user)
-    return redirect(url_for('user.dashboard'))
+
+    # انتقال سبد مهمان
+    _merge_guest_cart_to_user(user)
+
+    next_page = request.args.get('next')
+    return redirect(next_page or url_for('user.dashboard'))
+
+
+# ================= helper: merge cart =================
+def _merge_guest_cart_to_user(user):
+
+    if 'cart_items' not in session:
+        return
+
+    cart = user.carts.filter(Cart.status == 'pending').first()
+    if not cart:
+        cart = Cart()
+        user.carts.append(cart)
+        db.session.add(cart)
+        db.session.commit()
+
+    for pid, qty in session['cart_items'].items():
+
+        product = Product.query.get(int(pid))
+        if not product:
+            continue
+
+        item = CartItem.query.filter_by(
+            cart_id=cart.id,
+            product_id=product.id
+        ).first()
+
+        if item:
+            item.quantity += qty
+        else:
+            db.session.add(CartItem(
+                quantity=qty,
+                price=product.price,
+                product=product,
+                cart=cart
+            ))
+
+    db.session.commit()
+    session.pop('cart_items', None)
 
 
 # ================= ADD TO CART =================
-@app.route('/add-to-cart', methods=['GET'])
+@app.route('/add-to-cart')
 def add_to_cart():
 
     product_id = request.args.get('id')
@@ -92,13 +139,13 @@ def add_to_cart():
             db.session.add(cart)
             db.session.commit()
 
-        cart_item = CartItem.query.filter_by(
+        item = CartItem.query.filter_by(
             cart_id=cart.id,
             product_id=product.id
         ).first()
 
-        if cart_item:
-            cart_item.quantity += 1
+        if item:
+            item.quantity += 1
         else:
             db.session.add(CartItem(
                 quantity=1,
@@ -108,19 +155,18 @@ def add_to_cart():
             ))
 
         db.session.commit()
-        flash('محصول اضافه شد')
+        flash("محصول اضافه شد")
         return redirect(url_for('user.cart'))
 
-    else:
-        if 'cart_items' not in session:
-            session['cart_items'] = {}
+    # guest cart
+    if 'cart_items' not in session:
+        session['cart_items'] = {}
 
-        pid = str(product.id)
-        session['cart_items'][pid] = session['cart_items'].get(pid, 0) + 1
-        session.modified = True
+    pid = str(product.id)
+    session['cart_items'][pid] = session['cart_items'].get(pid, 0) + 1
+    session.modified = True
 
-        flash("ابتدا وارد شوید")
-        return redirect(url_for('user.login'))
+    return redirect(url_for('user.login', next=url_for('user.cart')))
 
 
 # ================= CART =================
@@ -131,10 +177,11 @@ def cart():
     return render_template('user/cart.html', cart=cart)
 
 
-# ================= REMOVE =================
+# ================= REMOVE FROM CART =================
 @app.route('/remove-from-cart')
 @login_required
 def remove_from_cart():
+
     item_id = request.args.get('id')
     item = CartItem.query.filter_by(id=item_id).first_or_404()
 
@@ -147,7 +194,7 @@ def remove_from_cart():
     return redirect(url_for('user.cart'))
 
 
-# ================= PAYMENT (MOCK) =================
+# ================= PAYMENT =================
 @app.route('/payment')
 @login_required
 def payment():
