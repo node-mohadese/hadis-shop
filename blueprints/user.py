@@ -36,6 +36,11 @@ def login():
     # ================= REGISTER =================
     if register:
 
+        # دوباره چک مهم (امنیت بیشتر)
+        if not username or not password:
+            flash("نام کاربری و رمز عبور الزامی است")
+            return redirect(url_for('user.login'))
+
         if phone and not re.fullmatch(r'09\d{9}', phone):
             flash("شماره تلفن نامعتبر است")
             return redirect(url_for('user.login'))
@@ -59,7 +64,6 @@ def login():
         db.session.commit()
 
         login_user(user)
-
         _merge_guest_cart_to_user(user)
 
         return redirect(url_for('user.dashboard'))
@@ -76,7 +80,6 @@ def login():
         return redirect(url_for('user.login'))
 
     login_user(user)
-
     _merge_guest_cart_to_user(user)
 
     next_page = request.args.get('next')
@@ -92,7 +95,7 @@ def _merge_guest_cart_to_user(user):
     cart = user.carts.filter(Cart.status == 'pending').first()
 
     if not cart:
-        cart = Cart()
+        cart = Cart(status="pending")
         user.carts.append(cart)
         db.session.add(cart)
         db.session.commit()
@@ -134,7 +137,7 @@ def add_to_cart():
         cart = current_user.carts.filter(Cart.status == 'pending').first()
 
         if not cart:
-            cart = Cart()
+            cart = Cart(status="pending")
             current_user.carts.append(cart)
             db.session.add(cart)
             db.session.commit()
@@ -201,7 +204,7 @@ def payment():
 
     cart = current_user.carts.filter(Cart.status == 'pending').first()
 
-    if not cart or not cart.cart_items:
+    if not cart or len(cart.cart_items) == 0:
         flash("سبد خرید خالی است")
         return redirect(url_for('user.cart'))
 
@@ -240,10 +243,14 @@ def verify():
         pay.cart.status = "rejected"
         flash("پرداخت ناموفق بود")
 
-    new_cart = Cart(status="pending")
-    user.carts.append(new_cart)
+    # جلوگیری از ساخت چند cart pending
+    existing = user.carts.filter(Cart.status == "pending").first()
 
-    db.session.add(new_cart)
+    if not existing:
+        new_cart = Cart(status="pending")
+        user.carts.append(new_cart)
+        db.session.add(new_cart)
+
     db.session.commit()
 
     return redirect(url_for('user.dashboard'))
