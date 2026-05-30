@@ -9,6 +9,7 @@ from models.product import Product
 from models.user import User
 import requests
 import config
+import re
 from flask import session
 app = Blueprint("user", __name__)
 
@@ -259,7 +260,13 @@ def dashboard():
         username = request.form.get('username', None)
         password = request.form.get('password', None)
         phone = request.form.get('phone', None)
+        if phone and not re.fullmatch(r'09\d{9}', phone):
+            flash("شماره تلفن نامعتبر است")
+            return redirect(url_for('user.dashboard'))
         address = request.form.get('address', None)
+        if address and len(address) < 10:
+            flash("آدرس خیلی کوتاه است")
+            return redirect(url_for('user.dashboard'))
 
         if current_user.username != username:
             user = User.query.filter(User.username == username).first()
