@@ -25,7 +25,13 @@ def login():
         username = request.form.get('username', None)
         password = request.form.get('password', None)
         phone = request.form.get('phone', None)
+        if phone and not re.fullmatch(r'09\d{9}', phone):
+            flash("شماره تلفن نامعتبر است (مثال: 09123456789)")
+            return redirect(url_for('user.login'))
         address = request.form.get('address', None)
+        if address and len(address) < 10:
+            flash("آدرس خیلی کوتاه است")
+            return redirect(url_for('user.login'))
 
     if register != None:
         # 1️⃣ ثبت‌نام کاربر
