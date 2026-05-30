@@ -9,7 +9,12 @@
 
     <section class="simple-box cart">
         <h1>سفارش شماره {{ cart.id }}</h1>
-
+        <div style="background: #f0f0f0; padding: 15px; border-radius: 10px; margin: 15px 0;">
+            <h3>اطلاعات کاربر:</h3>
+            <p><strong>نام کاربری:</strong> {{ cart.user.username }}</p>
+            <p><strong>شماره تماس:</strong> {{ cart.user.phone }}</p>
+            <p><strong>آدرس:</strong> {{ cart.user.address }}</p>
+        </div>
         <form action="#" method="post">
             <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
             <select name="status">
@@ -53,13 +58,20 @@
                 <th>شماره تراکنش</th>
                 <th>شماره کارت</th>
             </tr>
+
             {% for pay in cart.payments %}
                 <tr>
                     <td>{{ pay.get_status_persian() }}</td>
                     <td class="price">{{ pay.price }}</td>
-                    <td>{{ pay.refid }}</td>
-                    <td>{{ pay.transaction_id }}</td>
-                    <td>{{ pay.card_pan }}</td>
+                    <td>{{ pay.refid if pay.refid else '---' }}</td>
+                    <td>{{ pay.transaction_id if pay.transaction_id else '---' }}</td>
+                    <td>
+                        {% if pay.card_pan and pay.card_pan != 'None' %}
+                            **  ** {{ pay.card_pan[-4:] }}
+                        {% else %}
+                            ---
+                        {% endif %}
+                    </td>
                 </tr>
             {% endfor %}
         </table>

@@ -1,6 +1,6 @@
 SQLALCHEMY_DATABASE_URI = "sqlite:///database.db"
-ADMIN_USERNAME = "admin"
-ADMIN_PASSWORD = "1234"
+ADMIN_USERNAME = "Mohy"
+ADMIN_PASSWORD = "123456789Mohy"
 SECRET_KEY = "asdfghjkl123456tgvyhbujn23lakhsfcvb"
 PAYMENT_MERCHANT = "sandbox"
 PAYMENT_CALLBACK = "http://localhost:5000/verify"

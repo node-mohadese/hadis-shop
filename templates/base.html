@@ -15,8 +15,14 @@
 <script>
     const prices = document.getElementsByClassName('price')
     for (let i = 0; i < prices.length; i++) {
-        let price = prices[i]
-        price.innerText = parseInt(price.innerText).toLocaleString() + " تومان"
+        const prices = document.getElementsByClassName('price')
+for (let i = 0; i < prices.length; i++) {
+     let price = prices[i]
+     let value = parseInt(price.innerText.replace(/,/g, '').trim())
+     if (!isNaN(value)) {
+        price.innerText = value.toLocaleString() + " تومان"
+     }
+}
     }
     const header_menu = document.getElementById('header-menu');
     const change_header_menu = (show) => {

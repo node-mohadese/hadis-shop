@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, request, redirect, url_for, flash
-from flask_login import login_user, login_required, current_user,logout_user
+from flask_login import login_user, login_required, current_user, logout_user
 from passlib.hash import sha256_crypt
 from extentions import db
 from models.cart import Cart
@@ -9,7 +9,7 @@ from models.product import Product
 from models.user import User
 import requests
 import config
-
+from flask import session
 app = Blueprint("user", __name__)
 
 
@@ -27,55 +27,154 @@ def login():
         address = request.form.get('address', None)
 
     if register != None:
+        # 1️⃣ ثبت‌نام کاربر
         user = User.query.filter(User.username == username).first()
-        if user != None:
+        if user:
             flash('نام کاربری دیگری انتخاب کنید.')
             return redirect(url_for('user.login'))
+
         user = User(username=username, password=sha256_crypt.encrypt(password), phone=phone, address=address)
         db.session.add(user)
         db.session.commit()
+
+        # 2️⃣ ورود کاربر
         login_user(user)
 
-        return redirect(url_for('user.dashboard'))
+        # خیلی مهم: تازه کردن شیء کاربر بعد از لاگین
+        db.session.refresh(user)
+
+        # 3️⃣ گرفتن یا ایجاد cart
+        cart = user.carts.filter(Cart.status == 'pending').first()
+        if not cart:
+            cart = Cart()
+            user.carts.append(cart)
+            db.session.add(cart)
+            db.session.commit()
+
+        # 4️⃣ انتقال محصولات session به cart
+        if 'cart_items' in session:
+            for pid in session.get('cart_items', []):
+                product = Product.query.get(pid)
+                if product:
+                    cart_item = CartItem.query.filter_by(
+                        cart_id=cart.id,
+                        product_id=product.id
+                    ).first()
+                    if cart_item:
+                        cart_item.quantity += 1
+                    else:
+                        new_item = CartItem(
+                            quantity=1,
+                            price=product.price,
+                            product=product,
+                            cart=cart
+                        )
+                        db.session.add(new_item)
+            db.session.commit()
+            session.pop('cart_items', None)
+
+        # هدایت به صفحه بعدی
+        next_page = request.args.get('next')
+        return redirect(next_page or url_for('user.dashboard'))
 
     else:
         user = User.query.filter(User.username == username).first()
-        if user == None:
+        if user is None:
             flash('نام کاربری یا رمز اشتباه است.')
             return redirect(url_for('user.login'))
         if sha256_crypt.verify(password, user.password):
+            # ورود موفق
             login_user(user)
-            return redirect(url_for('user.dashboard'))
+
+            # تازه کردن شیء کاربر بعد از لاگین (همانند ثبت‌نام)
+            db.session.refresh(user)
+
+            # گرفتن یا ایجاد cart
+            cart = user.carts.filter(Cart.status == 'pending').first()
+            if not cart:
+                cart = Cart()
+                user.carts.append(cart)
+                db.session.add(cart)
+                db.session.commit()
+
+            # انتقال محصولات session به cart (تکرار کد برای ورود معمولی)
+            if 'cart_items' in session:
+                for pid in session.get('cart_items', []):
+                    product = Product.query.get(pid)
+                    if product:
+                        cart_item = CartItem.query.filter_by(
+                            cart_id=cart.id,
+                            product_id=product.id
+                        ).first()
+                        if cart_item:
+                            cart_item.quantity += 1
+                        else:
+                            new_item = CartItem(
+                                quantity=1,
+                                price=product.price,
+                                product=product,
+                                cart=cart
+                            )
+                            db.session.add(new_item)
+                db.session.commit()
+                session.pop('cart_items', None)
+
+            next_page = request.args.get('next')
+            return redirect(next_page or url_for('user.dashboard'))
         else:
             flash('نام کاربری یا رمز اشتباه است')
             return redirect(url_for('user.login'))
 
 
 @app.route('/add-to-cart', methods=['GET'])
-@login_required
+@app.route('/add-to-cart', methods=['GET'])
 def add_to_cart():
-    id = request.args.get('id')
-    product = Product.query.filter(Product.id == id).first_or_404()
-    cart = current_user.carts.filter(Cart.status == 'pending').first()
-    if cart == None:
-        cart = Cart()
-        current_user.carts.append(cart)
-        db.session.add(cart)
+    product_id = request.args.get('id')
+    product = Product.query.filter(Product.id == product_id).first_or_404()
 
-    cart_item = cart.cart_items.filter(CartItem.product == product).first()
-    if cart_item == None:
-        item = CartItem(quantity=1)
-        item.price = product.price
-        item.cart = cart
-        item.product = product
-        db.session.add(item)
+    if current_user.is_authenticated:
+        # کاربر لاگین کرده
+        cart = current_user.carts.filter(Cart.status == 'pending').first()
+        if not cart:
+            cart = Cart()
+            current_user.carts.append(cart)
+            db.session.add(cart)
+            db.session.commit()
+
+        # چک کردن اینکه قبلاً این محصول هست یا نه
+        cart_item = CartItem.query.filter_by(cart_id=cart.id, product_id=product.id).first()
+
+        if cart_item:
+            cart_item.quantity += 1
+        else:
+            new_item = CartItem(
+                quantity=1,
+                price=product.price,
+                product=product,
+                cart=cart
+            )
+            db.session.add(new_item)
+
+        db.session.commit()
+        flash('محصول با موفقیت به سبد خرید اضافه شد.')
+        return redirect(url_for('user.cart'))
 
     else:
-        cart_item.quantity += 1
+        # کاربر مهمان → ذخیره در session
+        if 'cart_items' not in session:
+            session['cart_items'] = {}
 
-    db.session.commit()
-    return redirect(url_for('user.cart'))
+        pid = str(product.id)
+        if pid in session['cart_items']:
+            session['cart_items'][pid] += 1
+        else:
+            session['cart_items'][pid] = 1
 
+        session.modified = True
+
+        flash("برای افزودن محصول به سبد خرید، ابتدا وارد حساب کاربری شوید.")
+        # مهم: مستقیم به سبد خرید برود، نه دوباره add-to-cart
+        return redirect(url_for('user.login', next=url_for('user.cart')))
 
 @app.route('/remove-from-cart', methods=['GET'])
 @login_required
@@ -122,25 +221,28 @@ def payment():
 
 
 @app.route('/verify', methods=['GET'])
-@login_required
 def verify():
     token = request.args.get('token')
     pay = Payment.query.filter(Payment.token == token).first_or_404()
+
+    # ✅ مهم: کاربر رو از طریق پرداخت پیدا کن و لاگین کن
+    user = pay.cart.user
+    login_user(user)
+
     r = requests.post(config.PAYMENT_VERIFY_REQUEST_URL,
                       data={
                           'api': 'sandbox',
                           'amount': pay.price,
                           'token': token
-
                       })
 
     pay_status = bool(r.json()['success'])
     if pay_status:
-        transaction_id = r.json()['result']['transaction_id']
-        refid = r.json()['result']['refid']
-        card_pan = r.json()['result']['card_pan']
+        transaction_id = r.json()['result'].get('transaction_id', '---')
+        refid = r.json()['result'].get('refid', '---')
+        card_pan = r.json()['result'].get('card_pan', None)
 
-        pay.card_pan = card_pan
+        pay.card_pan = card_pan if card_pan else None
         pay.transaction_id = transaction_id
         pay.refid = refid
         pay.status = 'success'
@@ -154,8 +256,6 @@ def verify():
     db.session.commit()
 
     return redirect(url_for('user.dashboard'))
-
-
 @app.route('/user/dashboard', methods=['GET', 'POST'])
 @login_required
 def dashboard():

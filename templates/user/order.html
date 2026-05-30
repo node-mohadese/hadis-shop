@@ -45,7 +45,13 @@
                     <td class="price">{{ pay.price }}</td>
                     <td>{{ pay.refid }}</td>
                     <td>{{ pay.transaction_id }}</td>
-                    <td>{{ pay.card_pan }}</td>
+                    <td>
+                        {% if pay.card_pan and pay.card_pan != 'None' %}
+                            **  ** {{ pay.card_pan[-4:] }}
+                        {% else %}
+                            ---
+                        {% endif %}
+                    </td>
                 </tr>
             {% endfor %}
         </table>
