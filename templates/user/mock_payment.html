@@ -1,0 +1,11 @@
+<h2>پرداخت آزمایشی</h2>
+
+<a href="{{ url_for('user.verify', token=token, status='success') }}">
+    پرداخت موفق
+</a>
+
+<br><br>
+
+<a href="{{ url_for('user.verify', token=token, status='failed') }}">
+    پرداخت ناموفق
+</a>

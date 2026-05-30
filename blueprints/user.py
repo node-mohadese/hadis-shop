@@ -212,23 +212,43 @@ def payment():
     db.session.add(pay)
     db.session.commit()
 
-    flash("پرداخت تستی موفق بود (Mock Mode)")
-    return redirect(url)
+    return render_template(
+        "user/mock_payment.html",
+        token=token
+    )
 
-@app.route('/verify', methods=['GET'])
+@app.route('/verify')
 def verify():
+
     token = request.args.get('token')
-    pay = Payment.query.filter(Payment.token == token).first_or_404()
+    status = request.args.get('status')
+
+    pay = Payment.query.filter_by(token=token).first_or_404()
 
     user = pay.cart.user
     login_user(user)
 
-    # 🔥 MOCK VERIFY
-    pay.status = 'success'
-    pay.cart.status = 'paid'
+    if status == "success":
+
+        pay.status = "success"
+        pay.cart.status = "paid"
+
+        flash("پرداخت موفق بود")
+
+    else:
+
+        pay.status = "failed"
+        pay.cart.status = "rejected"
+
+        flash("پرداخت ناموفق بود")
+
+    # ساخت سبد خرید جدید
+    new_cart = Cart()
+    user.carts.append(new_cart)
+
+    db.session.add(new_cart)
     db.session.commit()
 
-    flash("پرداخت تستی موفق بود (Mock Verify)")
     return redirect(url_for('user.dashboard'))
 @app.route('/user/dashboard', methods=['GET', 'POST'])
 @login_required
