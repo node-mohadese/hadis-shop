@@ -126,7 +126,7 @@ def login():
             return redirect(url_for('user.login'))
 
 
-@app.route('/add-to-cart', methods=['GET'])
+
 @app.route('/add-to-cart', methods=['GET'])
 def add_to_cart():
     product_id = request.args.get('id')
@@ -202,59 +202,33 @@ def cart():
 @login_required
 def payment():
     cart = current_user.carts.filter(Cart.status == 'pending').first()
-    r = requests.post(config.PAYMENT_FIRST_REQUEST_URL,
-                      data={
-                          'api': config.PAYMENT_MERCHANT,
-                          'amount': cart.total_price(),
-                          'callback': config.PAYMENT_CALLBACK
 
-                      })
-    token = r.json()['result']['token']
-    url = r.json()['result']['url']
+    import uuid
+    token = str(uuid.uuid4())
+    url = url_for('user.dashboard')
 
     pay = Payment(price=cart.total_price(), token=token)
     pay.cart = cart
     db.session.add(pay)
     db.session.commit()
 
+    flash("پرداخت تستی موفق بود (Mock Mode)")
     return redirect(url)
-
 
 @app.route('/verify', methods=['GET'])
 def verify():
     token = request.args.get('token')
     pay = Payment.query.filter(Payment.token == token).first_or_404()
 
-    # ✅ مهم: کاربر رو از طریق پرداخت پیدا کن و لاگین کن
     user = pay.cart.user
     login_user(user)
 
-    r = requests.post(config.PAYMENT_VERIFY_REQUEST_URL,
-                      data={
-                          'api': 'sandbox',
-                          'amount': pay.price,
-                          'token': token
-                      })
-
-    pay_status = bool(r.json()['success'])
-    if pay_status:
-        transaction_id = r.json()['result'].get('transaction_id', '---')
-        refid = r.json()['result'].get('refid', '---')
-        card_pan = r.json()['result'].get('card_pan', None)
-
-        pay.card_pan = card_pan if card_pan else None
-        pay.transaction_id = transaction_id
-        pay.refid = refid
-        pay.status = 'success'
-        pay.cart.status = 'paid'
-        db.session.commit()
-        flash("پرداخت موفقیت آمیز بود.")
-    else:
-        pay.status = 'failed'
-        flash("پرداخت با خطا مواجه شد.")
-
+    # 🔥 MOCK VERIFY
+    pay.status = 'success'
+    pay.cart.status = 'paid'
     db.session.commit()
 
+    flash("پرداخت تستی موفق بود (Mock Verify)")
     return redirect(url_for('user.dashboard'))
 @app.route('/user/dashboard', methods=['GET', 'POST'])
 @login_required
