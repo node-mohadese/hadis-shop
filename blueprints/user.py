@@ -28,7 +28,7 @@ def login():
     phone = request.form.get('phone', None)
     address = request.form.get('address', None)
 
-    # جلوگیری از ورودی خالی
+    # جلوگیری از خالی بودن
     if not username or not password:
         flash("نام کاربری و رمز عبور الزامی است")
         return redirect(url_for('user.login'))
@@ -60,7 +60,6 @@ def login():
 
         login_user(user)
 
-        # انتقال سبد مهمان
         _merge_guest_cart_to_user(user)
 
         return redirect(url_for('user.dashboard'))
@@ -78,20 +77,20 @@ def login():
 
     login_user(user)
 
-    # انتقال سبد مهمان
     _merge_guest_cart_to_user(user)
 
     next_page = request.args.get('next')
     return redirect(next_page or url_for('user.dashboard'))
 
 
-# ================= helper: merge cart =================
+# ================= MERGE GUEST CART =================
 def _merge_guest_cart_to_user(user):
 
     if 'cart_items' not in session:
         return
 
     cart = user.carts.filter(Cart.status == 'pending').first()
+
     if not cart:
         cart = Cart()
         user.carts.append(cart)
@@ -133,6 +132,7 @@ def add_to_cart():
     if current_user.is_authenticated:
 
         cart = current_user.carts.filter(Cart.status == 'pending').first()
+
         if not cart:
             cart = Cart()
             current_user.carts.append(cart)
@@ -201,6 +201,10 @@ def payment():
 
     cart = current_user.carts.filter(Cart.status == 'pending').first()
 
+    if not cart or not cart.cart_items:
+        flash("سبد خرید خالی است")
+        return redirect(url_for('user.cart'))
+
     token = str(uuid.uuid4())
 
     pay = Payment(
@@ -224,6 +228,7 @@ def verify():
 
     pay = Payment.query.filter_by(token=token).first_or_404()
     user = pay.cart.user
+
     login_user(user)
 
     if status == "success":
@@ -235,7 +240,7 @@ def verify():
         pay.cart.status = "rejected"
         flash("پرداخت ناموفق بود")
 
-    new_cart = Cart()
+    new_cart = Cart(status="pending")
     user.carts.append(new_cart)
 
     db.session.add(new_cart)
