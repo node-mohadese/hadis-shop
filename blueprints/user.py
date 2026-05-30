@@ -35,6 +35,9 @@ def login():
 
     if register != None:
         # 1️⃣ ثبت‌نام کاربر
+        if not username or not password:
+            flash("نام کاربری و رمز عبور نمی‌تواند خالی باشد")
+            return redirect(url_for('user.login'))
         user = User.query.filter(User.username == username).first()
         if user:
             flash('نام کاربری دیگری انتخاب کنید.')
