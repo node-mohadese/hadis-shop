@@ -26,7 +26,7 @@ def login():
         password = request.form.get('password', None)
         phone = request.form.get('phone', None)
         if phone and not re.fullmatch(r'09\d{9}', phone):
-            flash("شماره تلفن نامعتبر است (مثال: 09123456789)")
+            flash("شماره تلفن نامعتبر است")
             return redirect(url_for('user.login'))
         address = request.form.get('address', None)
         if address and len(address) < 10:
