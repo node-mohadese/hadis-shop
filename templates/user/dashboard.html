@@ -18,7 +18,11 @@
                     <tr>
                         <td>{{ cart.id }}</td>
                         <td>{{ cart.get_status_persian() }}</td>
-                        <td>جزئیات</td>
+                        <td>
+                              <a class="btn" href="{{ url_for('user.order', id=cart.id) }}">
+                                مشاهده
+                              </a>
+                        </td>
                     </tr>
                 {% endfor %}
             </table>
