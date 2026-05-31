@@ -70,11 +70,11 @@ def products():
 
         db.session.add(p)
         db.session.commit()
-        os.makedirs("static/cover", exist_ok=True)
 
-        if file and file.filename != "":
-            ext = file.filename.split('.')[-1]
-            path = os.path.join(app.root_path, 'static', 'cover')
+        if file and file.filename:
+
+            BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+            path = os.path.join(BASE_DIR, 'static', 'cover')
             os.makedirs(path, exist_ok=True)
 
             file.save(os.path.join(path, f"{p.id}.jpg"))
@@ -106,7 +106,9 @@ def edit_product(id):
         db.session.commit()
 
         if file and file.filename:
-            path = os.path.join(app.root_path, 'static', 'cover')
+
+            BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+            path = os.path.join(BASE_DIR, 'static', 'cover')
             os.makedirs(path, exist_ok=True)
 
             file.save(os.path.join(path, f"{product.id}.jpg"))
