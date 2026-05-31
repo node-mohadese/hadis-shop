@@ -53,26 +53,29 @@ def products():
     if request.method == "GET":
         products = Product.query.all()
         return render_template("admin/products.html", products=products)
+
     else:
-        name = request.form.get('name', None)
-        description = request.form.get('description', None)
-        price = request.form.get('price', None)
-        active = request.form.get('active', None)
-        file = request.files.get('cover', None)
+        name = request.form.get('name')
+        description = request.form.get('description')
+        price = request.form.get('price')
+        active = request.form.get('active')
+        file = request.files.get('cover')
 
-    p = Product(name=name, description=description, price=price)
-    if active == None:
-        p.active = 0
-    else:
-        p.active = 1
+        p = Product(name=name, description=description, price=price)
 
-    db.session.add(p)
-    db.session.commit()
+        if active is None:
+            p.active = 0
+        else:
+            p.active = 1
 
-    file.save(f'static/cover/{p.id}.jpg')
-    flash('محصول جدید اضافه شد.')
+        db.session.add(p)
+        db.session.commit()
 
-    return "done"
+        if file and file.filename != "":
+            file.save(f'static/cover/{p.id}.jpg')
+
+        flash('محصول جدید اضافه شد.')
+        return redirect(url_for('admin.products'))
 
 
 @app.route('/admin/dashboard/edit-product/<id>', methods=["GET", "POST"])
