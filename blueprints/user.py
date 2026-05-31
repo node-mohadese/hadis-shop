@@ -186,7 +186,13 @@ def cart():
 def remove_from_cart():
 
     item_id = request.args.get('id')
+
     item = CartItem.query.filter_by(id=item_id).first_or_404()
+
+    # امنیت: فقط صاحب سبد بتونه تغییر بده
+    if item.cart.user_id != current_user.id:
+        flash("دسترسی غیرمجاز")
+        return redirect(url_for('user.cart'))
 
     if item.quantity > 1:
         item.quantity -= 1
@@ -195,7 +201,6 @@ def remove_from_cart():
 
     db.session.commit()
     return redirect(url_for('user.cart'))
-
 
 # ================= PAYMENT =================
 @app.route('/payment')
@@ -302,3 +307,11 @@ def logout():
     logout_user()
     flash("خارج شدید")
     return redirect('/')
+
+
+@app.route('/user/order/<int:id>')
+@login_required
+def order(id):
+    cart = Cart.query.filter_by(id=id, user_id=current_user.id).first_or_404()
+
+    return render_template('user/order.html', cart=cart)
