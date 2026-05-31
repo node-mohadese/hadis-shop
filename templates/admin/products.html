@@ -19,6 +19,7 @@
                 <th>قیمت</th>
                 <th>فعال</th>
                 <th>ویرایش</th>
+                <th>حذف</th>
             </tr>
 
             {% for p in products %}
@@ -32,6 +33,13 @@
                              src="{{ url_for('static', filename='theme-image/done.png') if p.active == 1 else url_for('static', filename='theme-image/delete.png') }}">
                     </td>
                     <td><a href="/admin/dashboard/edit-product/{{ p.id }}">ویرایش</a></td>
+                    <td>
+                        <form action="/admin/dashboard/delete-product/{{ p.id }}" method="post">
+                            <button type="submit" onclick="return confirm('حذف شود؟')">
+                                 حذف
+                            </button>
+                        </form>
+                    </td>
                 </tr>
             {% endfor %}
         </table>
@@ -59,7 +67,6 @@
         </form>
     </section>
 
-    <!-- 🔴 اینجا باید باشه -->
     <script>
     function showFileName(input) {
         if (input.files && input.files[0]) {

@@ -115,3 +115,23 @@ def edit_product(id):
             flash('تغییرات با موفقیت ثبت شد.')
 
         return redirect(url_for("admin.edit_product", id=id))
+
+
+@app.route('/admin/dashboard/delete-product/<id>', methods=["POST"])
+def delete_product(id):
+    product = Product.query.get_or_404(id)
+
+    # حذف عکس محصول (اختیاری ولی پیشنهادی)
+    import os
+    BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    path = os.path.join(BASE_DIR, 'static', 'cover', f"{product.id}.jpg")
+
+    if os.path.exists(path):
+        os.remove(path)
+
+    # حذف از دیتابیس
+    db.session.delete(product)
+    db.session.commit()
+
+    flash("محصول حذف شد")
+    return redirect(url_for("admin.products"))
