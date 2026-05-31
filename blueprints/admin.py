@@ -3,7 +3,7 @@ import config
 from models.cart import Cart
 from models.product import Product
 from extentions import db
-
+import os
 app = Blueprint("admin", __name__)
 
 
@@ -70,9 +70,11 @@ def products():
 
         db.session.add(p)
         db.session.commit()
+        os.makedirs("static/cover", exist_ok=True)
 
         if file and file.filename != "":
-            file.save(f'static/cover/{p.id}.jpg')
+            ext = file.filename.split('.')[-1]
+            file.save(f'static/cover/{product.id}.jpg')
 
         flash('محصول جدید اضافه شد.')
         return redirect(url_for('admin.products'))
@@ -80,7 +82,7 @@ def products():
 
 @app.route('/admin/dashboard/edit-product/<id>', methods=["GET", "POST"])
 def edit_product(id):
-    product = Product.query.filter(Product.id == id).first_or_404()
+    product = Product.query.get_or_404(id)
     if request.method == "GET":
         return render_template("admin/edit-product.html", product=product)
     else:
@@ -100,7 +102,8 @@ def edit_product(id):
 
         db.session.commit()
 
-        if file.filename != "":
+        if file and file.filename:
+            os.makedirs("static/cover", exist_ok=True)
             file.save(f'static/cover/{product.id}.jpg')
             flash('تغییرات با موفقیت ثبت شد.')
 
