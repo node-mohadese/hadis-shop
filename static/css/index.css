@@ -581,11 +581,11 @@ table.cart td {
 }
 .btn {
     padding: 4px 10px;
-    background: #4c4c4c;
+    background: rgba(102, 140, 97, 0.29);
     color: white;
     border-radius: 6px;
     text-decoration: none;
 }
 .btn:hover {
-    background: #2f2f2f;
+    background: #4c4c4c;
 }
