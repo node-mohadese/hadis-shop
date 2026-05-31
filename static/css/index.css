@@ -579,3 +579,13 @@ table.cart td {
     text-align: center;
     vertical-align: middle;
 }
+.btn {
+    padding: 4px 10px;
+    background: #4c4c4c;
+    color: white;
+    border-radius: 6px;
+    text-decoration: none;
+}
+.btn:hover {
+    background: #2f2f2f;
+}
