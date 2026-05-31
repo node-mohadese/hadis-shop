@@ -565,3 +565,17 @@ table.cart td {
     text-align: center;
     vertical-align: middle;
 }
+
+table.cart {
+    margin: 20px auto;
+    width: 100%;
+    max-width: 600px;
+    text-align: center;
+    border-collapse: collapse;
+}
+
+table.cart th,
+table.cart td {
+    text-align: center;
+    vertical-align: middle;
+}
