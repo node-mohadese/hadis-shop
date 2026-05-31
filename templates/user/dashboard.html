@@ -37,7 +37,8 @@
             <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
 
             <input type="text" name="username" value="{{ current_user.username }}" placeholder="نام کاربری">
-            <input type="password" name="password" placeholder=" رمز عبور جدید">
+            <input type="password" name="old_password" placeholder="رمز فعلی">
+            <input type="password" name="new_password" placeholder="رمز جدید">
             <input type="number" name="phone" value="{{ current_user.phone }}" placeholder="شماره موبایل">
             <textarea name="address" placeholder="آدرس دقیق پستی">{{ current_user.address }}</textarea>
             <input type="submit" value="ثبت تغییرات">

@@ -270,7 +270,8 @@ def dashboard():
         return render_template('user/dashboard.html')
 
     username = request.form.get('username')
-    password = request.form.get('password')
+    old_password = request.form.get('old_password')
+    new_password = request.form.get('new_password')
     phone = request.form.get('phone')
     address = request.form.get('address')
 
@@ -291,8 +292,19 @@ def dashboard():
             return redirect(url_for('user.dashboard'))
         current_user.username = username
 
-    if password:
-        current_user.password = sha256_crypt.encrypt(password)
+    old_password = request.form.get('old_password')
+    new_password = request.form.get('new_password')
+
+    if new_password:
+        if not old_password:
+            flash("رمز فعلی را وارد کنید")
+            return redirect(url_for('user.dashboard'))
+
+        if not sha256_crypt.verify(old_password, current_user.password):
+            flash("رمز فعلی اشتباه است")
+            return redirect(url_for('user.dashboard'))
+
+        current_user.password = sha256_crypt.encrypt(new_password)
 
     db.session.commit()
 
