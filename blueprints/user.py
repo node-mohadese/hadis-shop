@@ -204,7 +204,7 @@ def payment():
 
     cart = current_user.carts.filter(Cart.status == 'pending').first()
 
-    if not cart or len(cart.cart_items) == 0:
+    if not cart or not cart.cart_items.first():
         flash("سبد خرید خالی است")
         return redirect(url_for('user.cart'))
 

@@ -12,9 +12,8 @@ class Cart(db.Model):
 
     def total_price(self):
         total = 0
-        for item in self.cart_items:
-            t = item.price * item.quantity
-            total += t
+        for item in self.cart_items.all():
+            total += item.price * item.quantity
         return total
 
     def get_status_persian(self):
