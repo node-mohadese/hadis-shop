@@ -74,7 +74,10 @@ def products():
 
         if file and file.filename != "":
             ext = file.filename.split('.')[-1]
-            file.save(f'static/cover/{product.id}.jpg')
+            path = os.path.join(app.root_path, 'static', 'cover')
+            os.makedirs(path, exist_ok=True)
+
+            file.save(os.path.join(path, f"{p.id}.jpg"))
 
         flash('محصول جدید اضافه شد.')
         return redirect(url_for('admin.products'))
@@ -103,8 +106,10 @@ def edit_product(id):
         db.session.commit()
 
         if file and file.filename:
-            os.makedirs("static/cover", exist_ok=True)
-            file.save(f'static/cover/{product.id}.jpg')
+            path = os.path.join(app.root_path, 'static', 'cover')
+            os.makedirs(path, exist_ok=True)
+
+            file.save(os.path.join(path, f"{product.id}.jpg"))
             flash('تغییرات با موفقیت ثبت شد.')
 
         return redirect(url_for("admin.edit_product", id=id))
